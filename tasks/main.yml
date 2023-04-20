@@ -1,0 +1,14 @@
+---
+# tasks file for template
+#
+
+- name: Template | Include OS-specific variables.
+  ansible.builtin.include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Template | Create Directories
+  ansible.builtin.file:
+    path: /opt/template
+    state: directory
+    owner: root
+    group: root
+    mode: 0750

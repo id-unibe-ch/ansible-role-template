@@ -1,0 +1,4 @@
+---
+# defaults file for template
+
+template_default: "some_value"
