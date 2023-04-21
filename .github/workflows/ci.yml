@@ -23,7 +23,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install test dependencies.
-        run: pip3 install molecule[docker] yamllint ansible-lint
+        run: pip3 install molecule 'molecule-plugins[docker]' yamllint ansible-lint
 
       - name: Lint code.
         run: |
@@ -41,9 +41,9 @@ jobs:
             playbook: converge.yml
           - distro: rockylinux9
             playbook: converge.yml
-          - distro: ubuntu2204
-            playbook: converge.yml
           - distro: ubuntu2004
+            playbook: converge.yml
+          - distro: ubuntu2204
             playbook: converge.yml
 
     steps:
@@ -56,7 +56,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install test dependencies.
-        run: pip3 install ansible molecule[docker] docker
+        run: pip3 install ansible molecule 'molecule-plugins[docker]' docker
 
       - name: Run Molecule tests.
         run: molecule test
