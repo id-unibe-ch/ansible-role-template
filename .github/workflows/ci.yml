@@ -1,6 +1,6 @@
 ---
 name: CI
-'on':
+on:
   pull_request:
   push:
     branches:
@@ -34,17 +34,13 @@ jobs:
   molecule:
     name: Molecule
     runs-on: ubuntu-latest
+    # See https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs#using-a-matrix-strategy
     strategy:
       matrix:
+        distro: [rockylinux8, rockylinux9, ubuntu2004, ubuntu2204]
+        scenario: [default]
         include:
-          - distro: rockylinux8
-            playbook: converge.yml
-          - distro: rockylinux9
-            playbook: converge.yml
-          - distro: ubuntu2004
-            playbook: converge.yml
-          - distro: ubuntu2204
-            playbook: converge.yml
+          - playbook: converge.yml
 
     steps:
       - name: Checkout the codebase
@@ -59,7 +55,7 @@ jobs:
         run: pip3 install ansible molecule 'molecule-plugins[docker]' docker
 
       - name: Run Molecule tests.
-        run: molecule test
+        run: molecule test -s ${{ matrix.scenario }}
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
