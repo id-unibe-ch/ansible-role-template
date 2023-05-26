@@ -1,25 +1,29 @@
 ---
 galaxy_info:
-  author: <Author name>
-  description: <Short description of the role>
-  company: hpc-unibe-ch
+  author: << .author >>
+  description: << .description >>
+  company: << .company >>
 
-  role_name: template
-  namespace: ubelix
+  role_name: << .name >>
+  namespace: << .namespace >>
 
-  license: GPL-2.0-or-later
+  license: << .license >>
 
   min_ansible_version: '2.1'
 
   platforms:
+    << if .versions.el }}
     - name: EL
       versions:
         - '8'
         - '9'
+    << end >>
+    << if .versions.ubuntu }}
     - name: Ubuntu
       versions:
         - focal
         - jammy
+    << end >>
 
   galaxy_tags: []
 
