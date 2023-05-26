@@ -18,12 +18,14 @@ galaxy_info:
     <<range .VersionsEL>>
         - '<< . >>'
     <<end>>
+    <<end>>
     <<if not .VersionsUbuntu>>
     - name: Ubuntu
       versions:
     <<range .VersionsUbuntu>>
         - '<< . >>'
-    << end >>
+    <<end>>
+    <<end>>
 
   galaxy_tags: []
 
