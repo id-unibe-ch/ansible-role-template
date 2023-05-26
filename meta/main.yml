@@ -11,18 +11,25 @@ galaxy_info:
 
   min_ansible_version: '2.1'
 
+  <<- $hasRocky := 0 >> <<- range .Platforms>><<if or (eq . "rockylinux8") (eq . "rockylinux9")>><<$hasRocky = 1>><<end>><<end >>
+  << $hasUbuntu := 0 >> << range .Platforms>><<if or (eq . "ubuntu2004") (eq . "ubuntu2204")>><<$hasUbuntu = 1>><<end>><<end >>
   platforms:
-    <<- if .VersionsEL>>
+    << if $hasRocky ->>
     - name: EL
       versions:
-        <<range .VersionsEL>>- '<< . >>' <<end>>
     << end ->>
-    <<- if .VersionsUbuntu ->>
+    << range .Platforms ->>
+    << if eq . "rockylinux8" >>    - '8'<<end >>
+    << if eq . "rockylinux9" >>    - '9'<<end >>
+    <<- end >>
+    << if $hasUbuntu ->>
     - name: Ubuntu
       versions:
-      <<range .VersionsUbuntu>>- '<< . >>'
-      <<end>>
-    <<end ->>
+    << end ->>
+    <<- range .Platforms ->>
+    << if eq . "ubuntu2004" >>    - 'focal'<<end>>
+    << if eq . "ubuntu2204" >>    - 'jammy'<<end>>
+    <<- end >>
 
   galaxy_tags: []
 
