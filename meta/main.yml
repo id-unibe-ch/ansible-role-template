@@ -12,20 +12,17 @@ galaxy_info:
   min_ansible_version: '2.1'
 
   platforms:
-    <<if not .VersionsEL>>
+    <<- if .VersionsEL>>
     - name: EL
       versions:
-    <<range .VersionsEL>>
-        - '<< . >>'
-    <<end>>
-    <<end>>
-    <<if not .VersionsUbuntu>>
+        <<range .VersionsEL>>- '<< . >>' <<end>>
+    << end ->>
+    <<- if .VersionsUbuntu ->>
     - name: Ubuntu
       versions:
-    <<range .VersionsUbuntu>>
-        - '<< . >>'
-    <<end>>
-    <<end>>
+      <<range .VersionsUbuntu>>- '<< . >>'
+      <<end>>
+    <<end ->>
 
   galaxy_tags: []
 
