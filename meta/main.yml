@@ -1,24 +1,24 @@
 ---
 galaxy_info:
-  author: << .author >>
-  description: << .description >>
-  company: << .company >>
+  author: << .Author >>
+  description: << .Description >>
+  company: << .Company >>
 
-  role_name: << .name >>
-  namespace: << .namespace >>
+  role_name: << .Name >>
+  namespace: << .Namespace >>
 
-  license: << .license >>
+  license: << .License >>
 
   min_ansible_version: '2.1'
 
   platforms:
-    << if .versions.el >>
+    << if .Versions.el >>
     - name: EL
       versions:
         - '8'
         - '9'
     << end >>
-    << if .versions.ubuntu >> 
+    << if .Versions.ubuntu >> 
     - name: Ubuntu
       versions:
         - focal
