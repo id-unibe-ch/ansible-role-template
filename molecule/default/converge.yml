@@ -5,4 +5,4 @@
   tasks:
     - name: "Include ansible-role-template"
       ansible.builtin.include_role:
-        name: "ubelix.template"
+        name: "<< .Namespace >>.template"
