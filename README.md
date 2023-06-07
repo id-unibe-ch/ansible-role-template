@@ -36,13 +36,12 @@ Including an example of how to use your role (for instance, with variables passe
 ## Compatibility
 
 This role has been written for and tested on and is therefore compatible with:
-
-<< range .Platforms ->>
-<< if eq . "rockylinux8" >> * Rocky-8<<end >>
-<< if eq . "rockylinux9" >> * Rocky-9<<end >>
+<< range .Platforms >>
+<< if eq . "rockylinux8" >> * Rocky-8<<end>>
+<< if eq . "rockylinux9" >> * Rocky-9<<end>>
 << if eq . "ubuntu2004" >> * Ubuntu 20.04<<end>>
 << if eq . "ubuntu2204" >> * Ubuntu 22.04<<end>>
-<<- end >>
+<< end >>
 
 ## License
 
