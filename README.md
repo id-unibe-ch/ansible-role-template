@@ -16,6 +16,7 @@ No prerequisites necessary at the moment.
 Available variables are listed below, along with default values (see also `defaults/main.yml`):
 
 > **Note:**
+
 > * All variabled should start with the role name (e.g. `template_`)
 > * OS-specific variables should be set in the `vars` directory and start with `__template_`
 
@@ -27,11 +28,14 @@ Specifies the number that template uses
 
 ## Example Playbook
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Including an example of how to use your role (for instance, with variables passed
+in as parameters) is always nice for users too:
 
     - hosts: servers
       roles:
-         - { role: << .Namespace >>.<< .Name >>, x: 42 }
+         - role: << .Namespace >>.<< .Name >>
+           vars:
+             << .Name >>_x: 42
 
 ## Compatibility
 
