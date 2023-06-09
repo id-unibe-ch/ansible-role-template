@@ -37,7 +37,7 @@ jobs:
     # See https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs#using-a-matrix-strategy
     strategy:
       matrix:
-        distro: [rockylinux8, rockylinux9, ubuntu2004, ubuntu2204]
+        distro: [<<range .Platforms>><< . >>, <<end>>]
         scenario: [default]
         include:
           - playbook: converge.yml

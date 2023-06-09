@@ -1,35 +1,56 @@
-template
-=========
+# template
 
-This is an ansible role template for hpc-unibe-ch.
-A brief description of the role and its capabilities should go here.
+An Ansible role that manages template. Currently the role has the following
+features:
 
-Style Conventions 
------------------
+* template feature 1
+* template feature 2
+* template feature 3
 
-TDB
+## Requirements
 
-* All variabled should start with the role name (e.g. `template_`)
-* OS-specific variables should be set in the `vars` directory and start with `__template_`
+No prerequisites necessary at the moment.
 
+## Role Variables
 
-Role Variables
---------------
+Available variables are listed below, along with default values (see also `defaults/main.yml`):
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+> **Note:**
 
+> * All variabled should start with the role name (e.g. `template_`)
+> * OS-specific variables should be set in the `vars` directory and start with `__template_`
 
-Example Playbook
-----------------
+### template_variable
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+    template_variable: "42"
+
+Specifies the number that template uses
+
+## Example Playbook
+
+Including an example of how to use your role (for instance, with variables passed
+in as parameters) is always nice for users too:
 
     - hosts: servers
       roles:
-         - { role: ubelix.template, x: 42 }
+         - role: << .Namespace >>.<< .Name >>
+           vars:
+             << .Name >>_x: 42
 
-License
--------
+## Compatibility
 
-TBD
+This role has been written for and tested on and is therefore compatible with:
+<< range .Platforms >>
+<< if eq . "rockylinux8" >> * Rocky-8<<end>>
+<< if eq . "rockylinux9" >> * Rocky-9<<end>>
+<< if eq . "ubuntu2004" >> * Ubuntu 20.04<<end>>
+<< if eq . "ubuntu2204" >> * Ubuntu 22.04<<end>>
+<< end >>
 
+## License
+
+<< .License >>
+
+## Author Information
+
+The role was created in 2023 by the << .Author >> at << .Company >>
