@@ -2,10 +2,10 @@
 # tasks file for template
 #
 
-- name: Template | Include OS-specific variables.
+- name: Include OS-specific variables.
   ansible.builtin.include_vars: "{{ ansible_os_family }}.yml"
 
-- name: Template | Include distribution and version-specific vars.
+- name: Include distribution and version-specific vars.
   ansible.builtin.include_vars: "{{ item }}"
   with_first_found:
     - files:
@@ -13,10 +13,10 @@
         - "{{ ansible_distribution }}.yml"
       skip: true
 
-- name: Template | Create Directories
+- name: Create Directories
   ansible.builtin.file:
     path: /opt/template
     state: directory
     owner: root
     group: root
-    mode: 0750
+    mode: '0750'
