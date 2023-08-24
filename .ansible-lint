@@ -1,0 +1,12 @@
+# Ansible-Lint configuration
+# Options: https://github.com/ansible/ansible-lint#configuration-file
+
+profile: production
+use_default_rules: true
+
+enable_list:
+  - no-log-password
+  - no-same-owner
+
+skip_list:
+  - name[casing]
