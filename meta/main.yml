@@ -1,25 +1,35 @@
 ---
 galaxy_info:
-  author: <Author name>
-  description: <Short description of the role>
-  company: hpc-unibe-ch
+  author: << .Author >>
+  description: << .Description >>
+  company: << .Company >>
 
-  role_name: template
-  namespace: ubelix
+  role_name: << .Name >>
+  namespace: << .Namespace >>
 
-  license: GPL-2.0-or-later
+  license: << .License >>
 
   min_ansible_version: '2.1'
 
+  <<- $hasRocky := 0 >> <<- range .Platforms>><<if or (eq . "rockylinux8") (eq . "rockylinux9")>><<$hasRocky = 1>><<end>><<end >>
+  << $hasUbuntu := 0 >> << range .Platforms>><<if or (eq . "ubuntu2004") (eq . "ubuntu2204")>><<$hasUbuntu = 1>><<end>><<end >>
   platforms:
+    << if $hasRocky ->>
     - name: EL
       versions:
-        - '8'
-        - '9'
+    << end ->>
+    << range .Platforms ->>
+    << if eq . "rockylinux8" >>    - '8'<<end >>
+    << if eq . "rockylinux9" >>    - '9'<<end >>
+    <<- end >>
+    << if $hasUbuntu ->>
     - name: Ubuntu
       versions:
-        - focal
-        - jammy
+    << end ->>
+    <<- range .Platforms ->>
+    << if eq . "ubuntu2004" >>    - 'focal'<<end>>
+    << if eq . "ubuntu2204" >>    - 'jammy'<<end>>
+    <<- end >>
 
   galaxy_tags: []
 
